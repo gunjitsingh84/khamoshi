@@ -1,67 +1,79 @@
-<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="ख़ामोशी की आवाज़ — तेजिंदर कौर"><title>ख़ामोशी की आवाज़ — तेजिंदर कौर</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet"><style>:root{--bg:#efe5e0;--paper:#fffaf4;--ink:#3e2f3b;--soft:#806d78;--accent:#b9787f;--line:#d9bdb5}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{font-family:'Tiro Devanagari Hindi',serif;color:var(--ink);background:radial-gradient(circle at 15% 20%,#f0dfe4 0,transparent 45%),radial-gradient(circle at 85% 80%,#dfe7f3 0,transparent 45%),var(--bg)}.scene{width:100vw;height:100vh;display:grid;place-items:center;position:relative}.book{width:min(96vw,150vh);aspect-ratio:3/2;position:relative;perspective:2400px;filter:drop-shadow(0 24px 40px rgba(62,47,59,.22))}.leaf{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.55,.05,.25,1);touch-action:none}.face{position:absolute;inset:0;backface-visibility:hidden;background:var(--paper);border:1px solid var(--line);padding:7% 8%;overflow:auto;box-shadow:inset 0 0 30px rgba(185,120,127,.05)}.back{transform:rotateY(180deg);background:linear-gradient(135deg,var(--paper),#f7eee8)}.cover .face{padding:0;display:grid;place-items:center;text-align:center;overflow:hidden;background:linear-gradient(145deg,#f8eee6,#e9d9d2)}.cover .face:before,.cover .face:after{content:'';position:absolute;border:1px solid rgba(120,82,75,.35);inset:3.5%;pointer-events:none}.cover .face:after{inset:6%;border-color:rgba(185,120,127,.3)}.cover-title{font-family:'Yatra One',cursive;font-size:clamp(42px,5.5vw,78px);line-height:1.35;position:relative;z-index:1}.cover-sub{font-size:clamp(16px,1.6vw,22px);color:var(--soft);margin-top:18px}.cover-author{font-size:clamp(17px,1.7vw,24px);color:var(--accent);margin-top:55px}.leafmark{font-size:34px;color:var(--accent);margin:12px}.poem{display:flex;flex-direction:column;height:100%;position:relative}.poem h2{font-family:'Yatra One',cursive;font-size:clamp(22px,2.5vw,34px);font-weight:400;margin:0 0 12px}.rule{width:90px;height:1px;background:var(--accent);margin:0 0 20px}.body{font-size:clamp(15px,1.45vw,20px);line-height:1.9;white-space:pre-line;column-count:2;column-gap:7%;flex:1}.num{text-align:center;color:var(--soft);font-size:11px;margin-top:10px}.end{display:grid;place-items:center;text-align:center}.end h2{font-family:'Yatra One';font-size:clamp(34px,4vw,54px);font-weight:400}.end p{max-width:650px;line-height:2;color:var(--soft);font-size:16px}.controls{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:18px;z-index:20;background:rgba(255,250,244,.82);padding:7px 14px;border:1px solid var(--line);border-radius:28px;backdrop-filter:blur(8px)}button{border:0;background:transparent;color:var(--accent);font-size:28px;width:38px;height:38px;border-radius:50%;cursor:pointer}button:hover{background:#fff}button:disabled{opacity:.3;cursor:default}.count{font-size:12px;color:var(--soft);min-width:55px;text-align:center}.hint{position:fixed;top:14px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--soft);opacity:.75;z-index:10}@media(max-width:700px){.book{width:94vw;aspect-ratio:3/4}.body{column-count:1;font-size:15px;line-height:1.75}.face{padding:10% 9%}.hint{top:8px}}@media(min-width:701px){.book::after{content:'';position:absolute;top:4%;bottom:4%;left:50%;width:1px;background:rgba(62,47,59,.13);z-index:0;pointer-events:none}}</style></head><body><div class="scene"><div class="hint">पन्ना पलटने के लिए तीर दबाएँ या स्वाइप करें</div><div class="book" id="book"></div></div><div class="controls"><button id="prev" aria-label="पिछला पृष्ठ">‹</button><div class="count" id="count"></div><button id="next" aria-label="अगला पृष्ठ">›</button></div><script>const poems = [{title:"कहते हैं मुझसे",body:`कहते हैं मुझसे —
-"तुम करती ही क्या हो घर में?
-सब काम तो नौकरानियाँ कर जाती हैं…"
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ख़ामोशी की आवाज़ — तेजिंदर कौर">
+<title>ख़ामोशी की आवाज़ — तेजिंदर कौर</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eee4d9;--paper:#fbf5eb;--ink:#3f302c;--soft:#79655e;--accent:#a66c68;--leaf:#7d8768;--line:#d7bdb0}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{font-family:"Noto Serif Devanagari",Georgia,serif;color:var(--ink);background:radial-gradient(circle at 15% 15%,#f5e8df 0,transparent 38%),radial-gradient(circle at 85% 85%,#e4eadc 0,transparent 38%),var(--bg)}
+.scene{width:100vw;height:100vh;display:grid;place-items:center;position:relative;padding:28px 20px 72px}.book{width:min(96vw,145vh);height:min(78vh,900px);position:relative;perspective:2400px;filter:drop-shadow(0 22px 34px rgba(63,48,44,.2))}.page{position:absolute;inset:0;background:var(--paper);border:1px solid var(--line);overflow:hidden;display:none}.page.active{display:block}.page-inner{height:100%;padding:6% 7%;position:relative;overflow:hidden}.page-inner:before{content:"";position:absolute;inset:2.5%;border:1px solid rgba(166,108,104,.28);pointer-events:none}.page-inner:after{content:"";position:absolute;right:3%;top:4%;width:90px;height:125px;border-left:2px solid rgba(125,135,104,.28);border-radius:60% 40%;transform:rotate(28deg);pointer-events:none}.leaf-a,.leaf-b{position:absolute;width:70px;height:32px;border-top:2px solid rgba(125,135,104,.35);border-radius:50%;pointer-events:none}.leaf-a{left:2%;bottom:6%;transform:rotate(-25deg)}.leaf-b{right:2%;bottom:6%;transform:rotate(205deg)}
+.cover .page-inner{display:grid;place-items:center;text-align:center;background:linear-gradient(145deg,#f8eee5,#eadbd1);padding:0}.cover .page-inner:before{inset:3.5%;border-color:rgba(125,135,104,.38)}.cover .page-inner:after{right:auto;top:auto;left:50%;bottom:10%;width:150px;height:80px;transform:translateX(-50%) rotate(5deg);border-left:0;border-top:2px solid rgba(125,135,104,.28);border-radius:50%}.cover-content{position:relative;z-index:2}.cover-title{font-size:clamp(42px,5.4vw,76px);line-height:1.35;font-weight:600}.cover-sub{font-size:clamp(15px,1.5vw,21px);color:var(--soft);margin-top:18px}.cover-author{font-size:clamp(18px,1.7vw,25px);color:var(--accent);margin-top:60px}.kicker{font-size:12px;letter-spacing:1.5px;color:var(--accent);margin-bottom:12px}.page-title{text-align:center;font-size:clamp(25px,2.4vw,35px);font-weight:600;margin:0 0 12px}.rule{height:1px;width:90px;background:var(--accent);margin:0 auto 22px}.poem-body{font-size:clamp(14px,1.25vw,18px);line-height:1.72;white-space:pre-line;text-align:center;position:relative;z-index:2;height:calc(100% - 70px);overflow:hidden}.poem-body.long{font-size:clamp(12.5px,1.08vw,16px);line-height:1.55}.page-number{position:absolute;bottom:3.5%;left:0;right:0;text-align:center;color:var(--soft);font-size:11px;z-index:3}.contents{text-align:center}.contents h2{font-size:34px;margin:5% 0 25px}.toc{display:grid;grid-template-columns:1fr 1fr;gap:10px 35px;max-width:750px;margin:auto;text-align:left}.toc div{font-size:16px;padding:8px 0;border-bottom:1px solid rgba(166,108,104,.2)}.author{text-align:center;display:grid;place-items:center}.author h2{font-size:clamp(38px,4.5vw,60px);font-weight:600;color:var(--accent);margin:15px 0}.author p{max-width:680px;font-size:16px;line-height:2;color:var(--soft);margin:0 auto}.controls{position:fixed;z-index:20;left:50%;bottom:17px;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:rgba(251,245,235,.9);border:1px solid var(--line);border-radius:28px;padding:6px 12px;backdrop-filter:blur(9px);box-shadow:0 6px 20px rgba(63,48,44,.1)}button{font-family:inherit;border:0;background:transparent;color:var(--accent);cursor:pointer;font-size:28px;width:38px;height:38px;border-radius:50%}button:hover{background:#fff}button:disabled{opacity:.25;cursor:default}.count{font-size:12px;color:var(--soft);min-width:62px;text-align:center}.hint{position:fixed;top:10px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--soft);opacity:.8;z-index:10}.fullscreen{font-size:20px}.spread{position:absolute;inset:0;display:flex;gap:0}.spread .page{position:relative;display:block;flex:1;min-width:0}.spread .page:first-child{border-right:0}.spread .page:last-child{border-left:0}.turning{animation:turn .55s ease}@keyframes turn{0%{transform:rotateY(0);transform-origin:left}50%{transform:rotateY(-8deg)}100%{transform:rotateY(0)}}
+@media(max-width:700px){.scene{padding:22px 10px 66px}.book{width:94vw;height:78vh;max-height:none}.page-inner{padding:10% 9%}.poem-body{font-size:14px;line-height:1.68}.poem-body.long{font-size:12.5px;line-height:1.5}.toc{grid-template-columns:1fr}.cover-title{font-size:42px}.cover-author{margin-top:45px}.page-title{font-size:26px}.hint{top:7px}}
+</style>
+</head>
+<body>
+<div class="scene">
+<div class="hint">पन्ना पलटने के लिए ← → दबाएँ या स्क्रीन पर स्वाइप करें</div>
+<div class="book" id="book"></div>
+</div>
+<div class="controls">
+<button id="prev" aria-label="पिछला पृष्ठ">‹</button>
+<div class="count" id="count">1 / 10</div>
+<button id="next" aria-label="अगला पृष्ठ">›</button>
+<button class="fullscreen" id="full" aria-label="पूर्ण स्क्रीन">⛶</button>
+</div>
+<script>
+const poems=[
+{title:"कहते हैं मुझसे",body:`कहते हैं मुझसे —
+“तुम करती ही क्या हो घर में?
+सब काम तो नौकरानियाँ कर जाती हैं…”
+
 हाँ, शायद सच है,
 मेरे हाथों में अब आटे की खुशबू कम रहती है,
 बरतनों की खनक भी कम सुनाई देती है…
+
 पर किसी ने कभी ये नहीं देखा
 कि मैं हर दिन
 अपने टूटते मन की किरचें समेटती हूँ।
+
 वो अच्छा बेटा है,
 माँ की हर खामोशी समझ लेता है,
 पिता की हर थकान पढ़ लेता है।
+
 वो अच्छा पिता भी है,
 बच्चों की छोटी-छोटी मुस्कानों पर
 अपनी दुनिया लुटा देता है।
+
 पर शायद…
 पति होना उसकी किस्मत में लिखा ही नहीं था।
+
 क्योंकि एक पति
 सिर्फ घर चलाने से नहीं बनता,
 वो बनता है
 पत्नी की आँखों में छिपे अधूरे सवाल पढ़ने से,
 उसके मौन में दबे दर्द को सुनने से,
 और बिना कहे उसका हाथ थाम लेने से।
+
 घर में सब कुछ है —
 सुविधाएँ, लोग, रौनक…
 बस अगर कुछ नहीं है,
 तो वो है
 मेरे हिस्से का अपनापन।
+
 मैं शिकायत भी नहीं करती अब,
 क्योंकि कुछ रिश्ते
 चीखते नहीं…
-धीरे-धीरे भीतर से मर जाते हैं।`},{title:"लोग शायद कल यही कहेंगे",body:`लोग शायद कल यही कहेंगे —
-"वो अच्छी बीवी नहीं थी…
-घर छोड़ दिया उसने…"
-पर कौन देखेगा
-उन रातों को,
-जहाँ मैं चुपचाप
-अपने ही आँसुओं में भीगती रही?
-कौन समझेगा
-कि रिश्ता सिर्फ साथ रहने से नहीं चलता,
-रिश्ते को ज़िंदा रखने के लिए
-थोड़ा अपनापन,
-थोड़ी नरमी,
-और थोड़ा प्रेम भी चाहिए होता है।
-मैंने कोशिश की थी…
-हर रोज़ की थी।
-अपने हिस्से की खामोशियाँ निगलीं,
-अपनी इच्छाएँ दबाईं,
-अपने दर्द को
-"सब ठीक है" कहकर छुपाया।
-पर कुछ लोग
-घर तो दे देते हैं,
-साथ नहीं दे पाते।
-और सबसे ज्यादा थका देने वाली बात ये होती है
-कि इंसान किसी लड़ाई में नहीं,
-बल्कि एक रूखे, बेरंग रिश्ते में
-धीरे-धीरे अंदर से खत्म होता जाता है।
-शायद दुनिया मुझे गलत समझे,
-पर मेरा दिल जानता है
-कि मैं रिश्ता तोड़ना नहीं चाहती थी…
-मैं बस थोड़ा-सा महसूस किया जाना चाहती थी।`},{title:"कभी-कभी सोचती हूँ",body:`कभी-कभी सोचती हूँ,
+धीरे-धीरे भीतर से मर जाते हैं।`},
+{title:"एक थकी हुई औरत",body:`कभी-कभी सोचती हूँ,
 क्या औरत की थकान
 सिर्फ उसके शरीर से नहीं,
 उसकी अहमियत से भी जुड़ी होती है?
+
 हाँ…
 मैं भी थकी हुई थी।
 मैं भी बाहर की तपती धूप से
@@ -70,159 +82,227 @@
 चेहरे पर पसीना,
 और मन में बस एक छोटी-सी उम्मीद —
 कि कोई पूछ लेगा,
-"बहुत थक गई हो ना?
-लो, पहले पानी पी लो…"
+“बहुत थक गई हो ना?
+लो, पहले पानी पी लो…”
+
 पर नहीं।
 दरवाज़ा खुलते ही
 सवाल मिला —
-"खाने में क्या है?"
+“खाने में क्या है?”
 और मैं मुस्कुरा दी,
 जैसे मेरी थकान का
 घर में कोई नाम ही नहीं।
+
 अजीब होता है ना…
 एक औरत सबकी भूख समझ लेती है,
 पर उसकी अपनी थकान
 किसी को दिखाई नहीं देती।
+
 समझ नहीं आता,
 मैं घर का हिस्सा हूँ
 या बस
-घर को चलाते रहने वाली एक आदत।`},{title:"कभी-कभी दिल की उदासी",body:`कभी-कभी दिल की उदासी की
+घर को चलाते रहने वाली एक आदत।`},
+{title:"मैं रिश्ता तोड़ना नहीं चाहती थी",body:`लोग शायद कल यही कहेंगे —
+“वो अच्छी बीवी नहीं थी…
+घर छोड़ दिया उसने…”
+
+पर कौन देखेगा
+उन रातों को,
+जहाँ मैं चुपचाप
+अपने ही आँसुओं में भीगती रही?
+
+कौन समझेगा
+कि रिश्ता सिर्फ साथ रहने से नहीं चलता,
+रिश्ते को ज़िंदा रखने के लिए
+थोड़ा अपनापन,
+थोड़ी नरमी,
+और थोड़ा प्रेम भी चाहिए होता है।
+
+मैंने कोशिश की थी…
+हर रोज़ की थी।
+अपने हिस्से की खामोशियाँ निगलीं,
+अपनी इच्छाएँ दबाईं,
+अपने दर्द को
+“सब ठीक है” कहकर छुपाया।
+
+पर कुछ लोग
+घर तो दे देते हैं,
+साथ नहीं दे पाते।
+
+और सबसे ज्यादा थका देने वाली बात ये होती है
+कि इंसान किसी लड़ाई में नहीं,
+बल्कि एक रूखे, बेरंग रिश्ते में
+धीरे-धीरे अंदर से खत्म होता जाता है।
+
+शायद दुनिया मुझे गलत समझे,
+पर मेरा दिल जानता है
+कि मैं रिश्ता तोड़ना नहीं चाहती थी…
+मैं बस थोड़ा-सा महसूस किया जाना चाहती थी।`},
+{title:"दो पल का सुकून",body:`कभी-कभी दिल की उदासी की
 कोई साफ वजह नहीं होती…
 बस भीतर एक खालीपन उतर आता है।
+
 फिर मन करता है —
 पुराने दोस्त मिल जाएँ,
 एक गर्म चाय का कप हो,
 और वही बेफिक्र पुरानी बातें…
 जहाँ हँसी बनावटी ना हो
 और दिल को खुद जैसा रहने की इजाज़त हो।
+
 मन करता है
 कहीं दूर निकल जाऊँ,
 जहाँ कोई सवाल ना पूछे,
 कोई उम्मीदें ना रखे,
 बस थोड़ी शांति हो
 और मैं खुद को फिर से सुन पाऊँ।
+
 शायद हमें हमेशा बड़े बदलाव नहीं चाहिए होते,
 कभी-कभी बस
 थोड़ा अपनापन,
 थोड़ा सुकून,
 और किसी अपने के साथ
 दो पल की सच्ची बातचीत ही
-थके हुए दिल को संभाल लेती है।`},{title:"मुझे ज़्यादा कुछ नहीं चाहिए",body:`मुझे ज़्यादा कुछ नहीं चाहिए…
+थके हुए दिल को संभाल लेती है।`},
+{title:"थोड़ा-सा",body:`मुझे ज़्यादा कुछ नहीं चाहिए…
 ना बड़े वादे,
 ना दिखावे वाला प्यार।
+
 बस यूँ ही
 बिना किसी वजह के
 थोड़ा-सा याद कर लिया जाए।
+
 थोड़ी-सी फिक्र हो —
 कि मैं थक गई हूँ शायद।
+
 थोड़ा-सा प्यार हो —
 जो शब्दों से नहीं,
 व्यवहार से महसूस हो।
+
 थोड़ा-सा एहसास हो —
 कि मेरी खामोशी भी कुछ कहती है।
+
 थोड़ा-सा भरोसा हो —
 कि मैं सिर्फ जिम्मेदारी नहीं,
 किसी की अपनी भी हूँ।
+
 और बस
 थोड़ा-सा साथ हो —
 ऐसा, जिसमें
 भीड़ में भी अकेलापन ना लगे।
+
 शायद रिश्तों को
 बहुत ज्यादा नहीं चाहिए होता,
 बस दिल को ये महसूस होना चाहिए
 कि वो किसी के लिए
-ज़रूरी है।`},{title:"नाशुक्रे लोग",body:`नाशुक्रे लोग,
+ज़रूरी है।`},
+{title:"नाशुक्रे लोग",body:`नाशुक्रे लोग,
 न जाने क्या ही चाहते हैं,
 जो मिला है उसे कम,
 जो नहीं मिला उसी का ग़म मनाते हैं।
+
 कभी शुक्र करके तो देखो,
 अपने आस-पास नज़र घुमाकर तो देखो,
 कितनी बरकत दी है ख़ुदा ने,
 ज़रा दिल से उसे पहचानकर तो देखो।
+
 सिर पर छत है,
 अपनों का साथ है,
 दो वक़्त की रोटी और
 साँसों में आज भी साँस है।
+
 कभी किसी को
 अपने हिस्से का निवाला खिलाकर तो देखो,
 किसी के चेहरे पर
 एक सच्ची मुस्कान लाकर तो देखो।
+
 कभी किसी की ख़ुशी में
 अपनी ख़ुशी मिलाकर तो देखो,
 बिना किसी मतलब के
 किसी का हाथ थामकर तो देखो।
+
 हर ख़्वाहिश पूरी हो,
 ये ज़रूरी तो नहीं,
 जो मिला है वो कम हो,
 ये भी तो ज़रूरी नहीं।
+
 कभी शिकायतों से नज़र हटाकर,
 शुक्र की नज़र से तो देखो,
 ज़िंदगी ने क्या-क्या दिया है तुम्हें,
 ज़रा गिनकर तो देखो।
+
 जो नहीं मिला,
 उसका हिसाब छोड़ दो,
 जो मिला है,
 उसका शुक्र तो करो।
+
 ज़िंदगी बहुत खूबसूरत है,
 बस नज़र का फ़र्क़ है—
 कभी किसी को मुस्कुराकर तो देखो,
 कभी ख़ुदा का शुक्र करके तो देखो…
 फिर शायद समझ आएगा,
 कमी ज़िंदगी में नहीं,
-हमारी चाहतों में है।`},{title:"किसी ने पूछा ही नहीं",body:`मैं क्या चाहती हूँ,
+हमारी चाहतों में है।`},
+{title:"किसी ने पूछा ही नहीं",body:`मैं क्या चाहती हूँ,
 किसी ने पूछा ही नहीं,
 मैं क्यों हूँ ख़ामोश,
 किसी ने समझा ही नहीं।
+
 मेरे होंठों की हँसी के पीछे
 छिपे ग़म को पहचान ही नहीं पाए,
 मेरी आँखों में ठहरे सवालों को
 किसी ने पढ़ा ही नहीं।
+
 मेरे दिल में जो
 प्यार भरे एहसास थे,
 उन्हें महसूस करने की
 किसी ने कोशिश ही नहीं की।
+
 सबने मेरी मुस्कान देखी,
 किसी ने मेरी ख़ामोशी नहीं देखी,
-सबने पूछा— "सब ठीक है?"
+सबने पूछा— “सब ठीक है?”
 पर जवाब सुनने की
 फ़ुर्सत किसी के पास नहीं थी।
+
 मैंने भी फिर
 कहना छोड़ दिया,
 जो दिल में था
 उसे जताना छोड़ दिया।
+
 शायद मेरी ख़ामोशी को
 सबने मेरी आदत समझ लिया,
 और मेरे मुस्कुराने को
 मेरी ख़ुशी…
+
 काश, कोई एक बार
 बस इतना पूछ लेता—
-"तुम सच में कैसी हो?"
+“तुम सच में कैसी हो?”
+
 तो शायद
 मैं भी अपने दिल की
 कुछ बातें कह पाती…
 और शायद कोई
 मेरी ख़ामोशी को
-मेरी आवाज़ समझ पाता।`},{title:"कुछ तो क़दर कर लेते",body:`कुछ तो क़दर कर लेते,
-थोड़ी-सी तो नज़र भर देख लेते।
-बहुत मेहनत की है मैंने जीवन में,
-थोड़ा मान-सम्मान देकर तो देखते।
-यहाँ बहुत दिल दुखता है,
-जब मेरी मेहनत का फल कोई और खाता है।
-कुछ लोगों को तो बहुत मज़ा आता है,
-क्योंकि उनसे मेरा आगे बढ़ना सहा नहीं जाता है।
-हर दिन अपनी औकात से बढ़कर काम करती हूँ मैं,
-आज तक कुछ नहीं माँगा था कभी।
-पर अब माँगा है तो बस इतनी-सी आस रखती हूँ—
-मेरी मेहनत को भी पहचान मिले कभी।
-नहीं चाहिए हीरे-जवाहरात तुम्हारे,
-न कोई दौलत, न कोई उपहार चाहिए।
-बस मेरे हिस्से का थोड़ा-सा प्यार,
-थोड़ा-सा मान और अधिकार चाहिए।
-क्योंकि हर बार चुप रह जाना
-ये तो मेरी आदत हो सकती है,
-पर इसका मतलब ये नहीं
-कि मुझे क़दर की चाहत नहीं।
-मैंने अपना सब कुछ दे दिया,
-अब थोड़ा-सा अपना भी हक़ चाहती हूँ…
-नहीं माँगती दुनिया भर की खुशियाँ,
-बस अपने हिस्से का सम्मान चाहती हूँ।`}];const book=document.getElementById('book'),count=document.getElementById('count'),prev=document.getElementById('prev'),next=document.getElementById('next');const defs=[{type:'cover'},...poems.map((poem,i)=>({type:'poem',poem,num:i+1})),{type:'end'}];const leaves=defs.map((d,i)=>{const l=document.createElement('div');l.className='leaf '+d.type;const f=document.createElement('div');f.className='face front';const b=document.createElement('div');b.className='face back';if(d.type==='cover')f.innerHTML='<div><div class="leafmark">❦</div><div class="cover-title">ख़ामोशी की<br>आवाज़</div><div class="cover-sub">कुछ अनकहे एहसासों की कविताएँ</div><div class="cover-author">तेजिंदर कौर</div></div>';else if(d.type==='poem')f.innerHTML='<div class="poem"><h2>'+d.poem.title+'</h2><div class="rule"></div><div class="body">'+d.poem.body+'</div><div class="num">'+d.num+' / '+poems.length+'</div></div>';else f.innerHTML='<div class="end"><div><h2>समाप्त</h2><p>यह संग्रह उन भावनाओं को शब्द देने की एक कोशिश है जो अक्सर रिश्तों, ज़िम्मेदारियों और रोज़मर्रा की ज़िंदगी के बीच अनकही रह जाती हैं।</p><div class="cover-author">लेखिका · तेजिंदर कौर</div></div></div>';l.append(f,b);book.append(l);return l});let current=0;function render(){leaves.forEach((l,i)=>{l.style.zIndex=i<current?i:defs.length-i;l.style.transform=i<current?'rotateY(-180deg)':'rotateY(0deg)'});count.textContent=(current+1)+' / '+defs.length;prev.disabled=current===0;next.disabled=current===defs.length-1}function goNext(){if(current<defs.length-1){current++;render()}}function goPrev(){if(current>0){current--;render()}}next.onclick=goNext;prev.onclick=goPrev;document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')goNext();if(e.key==='ArrowLeft')goPrev()});let sx=0;book.addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX,{passive:true});book.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)(dx<0?goNext:goPrev)()},{passive:true});render();</script></body></html>
+मेरी आवाज़ समझ पाता।`}
+];
+
+const pages=[];
+function el(html,cls='page'){const d=document.createElement('div');d.className=cls;d.innerHTML=html;return d}
+const book=document.getElementById('book');
+pages.push(el(`<div class="page-inner"><span class="leaf-a"></span><span class="leaf-b"></span><div class="cover-content"><div class="cover-title">ख़ामोशी की<br>आवाज़</div><div class="cover-sub">कुछ अनकहे एहसासों की कविताएँ</div><div class="cover-author">तेजिंदर कौर</div></div></div>`,`page cover`));
+pages.push(el(`<div class="page-inner contents"><div class="kicker">काव्य संग्रह</div><h2>विषय-सूची</h2><div class="rule"></div><div class="toc"><div>01 · कहते हैं मुझसे</div><div>02 · एक थकी हुई औरत</div><div>03 · मैं रिश्ता तोड़ना नहीं चाहती थी</div><div>04 · दो पल का सुकून</div><div>05 · थोड़ा-सा</div><div>06 · नाशुक्रे लोग</div><div>07 · किसी ने पूछा ही नहीं</div></div></div><div class="page-number">2</div></div>`,`page`));
+poems.forEach((p,i)=>{const long=i===0||i===2||i===5;pages.push(el(`<div class="page-inner"><span class="leaf-a"></span><span class="leaf-b"></span><div class="kicker" style="text-align:center">${String(i+1).padStart(2,'0')}</div><h2 class="page-title">${p.title}</h2><div class="rule"></div><div class="poem-body ${long?'long':''}">${p.body}</div><div class="page-number">${i+3}</div></div>`,`page`))});
+pages.push(el(`<div class="page-inner author"><div><div class="kicker">लेखिका</div><h2>तेजिंदर कौर</h2><div class="rule"></div><p>यह संग्रह उन भावनाओं को शब्द देने की एक कोशिश है जो अक्सर रिश्तों, ज़िम्मेदारियों और रोज़मर्रा की ज़िंदगी के बीच अनकही रह जाती हैं। कुछ कविताएँ दर्द से निकली हैं, कुछ अपनापन तलाशती हैं, और कुछ हमें याद दिलाती हैं कि ज़िंदगी में शुक्र के लिए भी बहुत कुछ है।</p></div><div class="page-number">10</div></div>`,`page`));
+pages.forEach(p=>book.appendChild(p));
+let current=0;
+const count=document.getElementById('count'),prev=document.getElementById('prev'),next=document.getElementById('next');
+function render(){pages.forEach((p,i)=>p.classList.toggle('active',i===current));count.textContent=`${current+1} / ${pages.length}`;prev.disabled=current===0;next.disabled=current===pages.length-1}
+function go(n){if(n<0||n>=pages.length)return;const old=pages[current];current=n;const fresh=pages[current];fresh.classList.add('turning');setTimeout(()=>fresh.classList.remove('turning'),550);render()}
+prev.onclick=()=>go(current-1);next.onclick=()=>go(current+1);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(current-1);if(e.key==='ArrowRight'||e.key===' ')go(current+1);if(e.key==='Home')go(0);if(e.key==='End')go(pages.length-1)});
+let sx=0;book.addEventListener('touchstart',e=>{sx=e.changedTouches[0].clientX},{passive:true});book.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)go(current+(dx<0?1:-1))},{passive:true});
+let down=false,px=0;book.addEventListener('mousedown',e=>{down=true;px=e.clientX});window.addEventListener('mouseup',e=>{if(!down)return;down=false;const dx=e.clientX-px;if(Math.abs(dx)>70)go(current+(dx<0?1:-1))});
+document.getElementById('full').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()};
+render();
+</script>
+</body>
+</html>
