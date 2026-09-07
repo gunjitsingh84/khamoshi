@@ -1,7 +1,58 @@
-<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="ख़ामोशी की आवाज़ — तेजिंदर कौर"><title>ख़ामोशी की आवाज़ — तेजिंदर कौर</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#eee8dc;color:#3e3a34;font-family:'Noto Serif Devanagari',serif}body{overflow:hidden}.scene{height:100vh;width:100vw;display:flex;align-items:center;justify-content:center;padding:40px 5vw 75px}.book{position:relative;width:min(1180px,92vw);height:min(82vh,760px);background:#f8f2e6;box-shadow:0 18px 50px rgba(55,45,30,.22);border:1px solid #d9cdb9;overflow:hidden}.page{position:absolute;inset:0;background:#f8f2e6;display:none}.page.active{display:block}.page-inner{position:relative;width:100%;height:100%;padding:7% 7%;overflow:hidden}.poem-body{white-space:pre-line;text-align:left;position:relative;z-index:2;height:calc(100% - 72px);overflow:hidden;column-count:3;column-gap:34px;column-fill:auto;font-size:clamp(16px,1.25vw,19px);line-height:1.52}.poem-body.long{font-size:clamp(16px,1.25vw,19px);line-height:1.47}.page-title{text-align:center;font-size:28px;margin:0 0 8px;font-weight:600}.kicker{text-align:center;letter-spacing:2px;font-size:12px;color:#887966;margin-bottom:8px}.rule{width:70px;height:1px;background:#b8a990;margin:10px auto 18px}.page-number{position:absolute;bottom:15px;left:0;right:0;text-align:center;font-size:11px;color:#9b8e7d}.leaf-a,.leaf-b{position:absolute;width:90px;height:120px;border:1px solid rgba(120,145,110,.25);border-radius:100% 0 100% 0;transform:rotate(35deg);opacity:.65}.leaf-a{top:18px;right:18px}.leaf-b{bottom:15px;left:18px;transform:rotate(215deg)}.cover{background:linear-gradient(145deg,#f6efe2,#e8dfd0)}.cover-content{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.cover-title{font-size:clamp(48px,6vw,78px);line-height:1.2;color:#4b4a40;font-weight:600}.cover-sub{margin-top:20px;font-size:17px;color:#857967}.cover-author{margin-top:70px;font-size:22px}.contents h2,.author h2{text-align:center;font-size:32px;margin:8px 0}.toc{display:grid;grid-template-columns:1fr 1fr;gap:15px 35px;font-size:17px;line-height:1.6;margin-top:28px}.author{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.author p{max-width:680px;font-size:17px;line-height:2}.controls{position:fixed;bottom:18px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:18px;z-index:20}.controls button{border:1px solid #b9ad9a;background:#f7f0e4;color:#5b5348;width:38px;height:38px;border-radius:50%;font:24px serif;cursor:pointer}.controls button:disabled{opacity:.35}.count{font-size:13px;color:#756a5c;min-width:70px;text-align:center}.hint{position:fixed;top:10px;left:0;right:0;text-align:center;color:#887b69;font-size:12px}
-@media(max-width:700px){body{overflow:hidden}.scene{height:100dvh;min-height:100vh;width:100vw;padding:38px 8px 68px;align-items:flex-start}.book{width:100%;height:calc(100dvh - 112px);min-height:0;max-height:none;overflow:hidden}.page{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-y}.page-inner{height:auto;min-height:100%;padding:7% 7% 14%;overflow:visible}.poem-body{column-count:1;font-size:16px;line-height:1.58;height:auto;min-height:0;overflow:visible;padding:0 4px 55px 0}.poem-body.long{column-count:1;font-size:16px;line-height:1.52;height:auto;overflow:visible}.page-title{font-size:24px;margin-bottom:6px}.kicker{font-size:10px;margin-bottom:5px}.rule{margin:7px auto 13px}.toc{grid-template-columns:1fr;font-size:15px;line-height:1.55}.author{min-height:100%;overflow:visible}.author p{font-size:16px;line-height:1.8}.cover-title{font-size:42px}.cover-author{margin-top:42px}.hint{top:5px;font-size:10px;padding:0 12px}.controls{bottom:10px;gap:12px}.controls button{width:36px;height:36px}.count{font-size:12px;min-width:58px}}
-</style></head><body><div class="scene"><div class="hint">पन्ना पलटने के लिए ← → दबाएँ या स्क्रीन पर स्वाइप करें</div><div class="book" id="book"></div></div><div class="controls"><button id="prev" aria-label="पिछला पृष्ठ">‹</button><div class="count" id="count"></div><button id="next" aria-label="अगला पृष्ठ">›</button><button id="full" aria-label="पूर्ण स्क्रीन">⛶</button></div><script>
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ख़ामोशी की आवाज़ — तेजिंदर कौर">
+<title>ख़ामोशी की आवाज़ — तेजिंदर कौर</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#eee8dc;color:#3e3a34;font-family:'Noto Serif Devanagari',serif}
+body{overflow:hidden}
+.scene{height:100vh;width:100vw;display:flex;align-items:center;justify-content:center;padding:40px 5vw 75px}
+.book{position:relative;width:min(1180px,92vw);height:min(82vh,760px);background:#f8f2e6;box-shadow:0 18px 50px rgba(55,45,30,.22);border:1px solid #d9cdb9;overflow:hidden}
+.page{position:absolute;inset:0;background:#f8f2e6;display:none}
+.page.active{display:block}
+.page:not(.active){display:none!important}
+.page-inner{position:relative;width:100%;height:100%;padding:7% 7%;overflow:hidden}
+.poem-body{white-space:pre-line;text-align:left;position:relative;z-index:2;height:calc(100% - 72px);overflow:hidden;column-count:3;column-gap:34px;column-fill:auto;font-size:clamp(16px,1.25vw,19px);line-height:1.52}
+.poem-body.long{font-size:clamp(16px,1.25vw,19px);line-height:1.47}
+.page-title{text-align:center;font-size:28px;margin:0 0 8px;font-weight:600}
+.kicker{text-align:center;letter-spacing:2px;font-size:12px;color:#887966;margin-bottom:8px}
+.rule{width:70px;height:1px;background:#b8a990;margin:10px auto 18px}
+.page-number{position:absolute;bottom:15px;left:0;right:0;text-align:center;font-size:11px;color:#9b8e7d}
+.leaf-a,.leaf-b{position:absolute;width:90px;height:120px;border:1px solid rgba(120,145,110,.25);border-radius:100% 0 100% 0;transform:rotate(35deg);opacity:.65}
+.leaf-a{top:18px;right:18px}.leaf-b{bottom:15px;left:18px;transform:rotate(215deg)}
+.cover{background:linear-gradient(145deg,#f6efe2,#e8dfd0)}
+.cover-content{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cover-title{font-size:clamp(48px,6vw,78px);line-height:1.2;color:#4b4a40;font-weight:600}
+.cover-sub{margin-top:20px;font-size:17px;color:#857967}.cover-author{margin-top:70px;font-size:22px}
+.contents h2{text-align:center;font-size:32px;margin:8px 0}.toc{display:grid;grid-template-columns:1fr 1fr;gap:15px 35px;font-size:17px;line-height:1.6;margin-top:28px}
+.author-page .page-inner.author{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.author-page h2{text-align:center;font-size:32px;margin:8px 0}.author-page p{max-width:680px;font-size:17px;line-height:2}
+.controls{position:fixed;bottom:18px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:18px;z-index:20}
+.controls button{border:1px solid #b9ad9a;background:#f7f0e4;color:#5b5348;width:38px;height:38px;border-radius:50%;font:24px serif;cursor:pointer}.controls button:disabled{opacity:.35}
+.count{font-size:13px;color:#756a5c;min-width:70px;text-align:center}.hint{position:fixed;top:10px;left:0;right:0;text-align:center;color:#887b69;font-size:12px}
+@media(max-width:700px){
+body{overflow:hidden}.scene{height:100dvh;min-height:100vh;width:100vw;padding:38px 8px 68px;align-items:flex-start}
+.book{width:100%;height:calc(100dvh - 112px);min-height:0;max-height:none;overflow:hidden}
+.page{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+.page-inner{height:auto;min-height:100%;padding:7% 7% 14%;overflow:visible}
+.poem-body,.poem-body.long{column-count:1;font-size:16px;line-height:1.55;height:auto;min-height:0;overflow:visible;padding:0 5px 60px 0}
+.page-title{font-size:24px;margin-bottom:6px}.kicker{font-size:10px;margin-bottom:5px}.rule{margin:7px auto 13px}
+.toc{grid-template-columns:1fr;font-size:15px;line-height:1.55}.author-page .page-inner.author{min-height:100%;padding-bottom:80px}.author-page p{font-size:16px;line-height:1.8}
+.cover-title{font-size:42px}.cover-author{margin-top:42px}.hint{top:5px;font-size:10px;padding:0 12px}
+.controls{bottom:10px;gap:12px}.controls button{width:36px;height:36px}.count{font-size:12px;min-width:58px}
+}
+</style>
+</head>
+<body>
+<div class="scene"><div class="hint">पन्ना पलटने के लिए ← → दबाएँ या स्क्रीन पर स्वाइप करें</div><div class="book" id="book"></div></div>
+<div class="controls"><button id="prev" aria-label="पिछला पृष्ठ">‹</button><div class="count" id="count"></div><button id="next" aria-label="अगला पृष्ठ">›</button><button id="full" aria-label="पूर्ण स्क्रीन">⛶</button></div>
+<script>
 const poems=[
 {title:'कहते हैं मुझसे',body:`कहते हैं मुझसे —
 “तुम करती ही क्या हो घर में?
@@ -292,5 +343,13 @@ function addPage(cls,inner){const p=document.createElement('div');p.className='p
 addPage('cover',`<div class="page-inner"><div class="cover-content"><div class="cover-title">ख़ामोशी की आवाज़</div><div class="cover-sub">कुछ अनकहे एहसास… कुछ अधूरी बातें…</div><div class="cover-author">तेजिंदर कौर</div></div></div>`);
 addPage('contents',`<div class="page-inner"><div class="contents"><div class="kicker">संग्रह</div><h2>विषय-सूची</h2><div class="toc">${poems.map((p,i)=>`<div>${i+1}. ${p.title}</div>`).join('')}</div></div></div>`);
 poems.forEach((p,i)=>addPage('poem',`<div class="page-inner"><div class="leaf-a"></div><div class="leaf-b"></div><div class="kicker">कविता ${i+1}</div><h1 class="page-title">${p.title}</h1><div class="rule"></div><div class="poem-body ${p.body.length>900?'long':''}">${p.body.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div><div class="page-number">${i+3}</div></div>`));
-addPage('author',`<div class="page-inner author"><div><div class="kicker">लेखिका</div><h2>तेजिंदर कौर</h2><p>यह संग्रह उन भावनाओं को शब्द देने की एक कोशिश है जो अक्सर रिश्तों, ज़िम्मेदारियों और रोज़मर्रा की ज़िंदगी के बीच अनकही रह जाती हैं। कुछ कविताएँ दर्द से निकली हैं, कुछ अपनापन तलाशती हैं, और कुछ हमें याद दिलाती हैंकि ज़िंदगी में शुक्र के लिए भी बहुत कुछ है।</p></div></div>`);
-let current=0;function render(){pages.forEach((p,i)=>p.classList.toggle('active',i===current));document.getElementById('count').textContent=(current+1)+' / '+pages.length;document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===pages.length-1;pages[current].scrollTop=0}function go(n){if(n<0||n>=pages.length)return;current=n;render()}document.getElementById('prev').onclick=()=>go(current-1);document.getElementById('next').onclick=()=>go(current+1);document.getElementById('full').onclick=()=>document.documentElement.requestFullscreen?.();let sx=0;document.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>60)go(current+(dx<0?1:-1))},{passive:true});document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')go(current+1);if(e.key==='ArrowLeft'||e.key==='PageUp')go(current-1)});render();</script></body></html>
+addPage('author-page',`<div class="page-inner author"><div><div class="kicker">लेखिका</div><h2>तेजिंदर कौर</h2><p>यह संग्रह उन भावनाओं को शब्द देने की एक कोशिश है जो अक्सर रिश्तों, ज़िम्मेदारियों और रोज़मर्रा की ज़िंदगी के बीच अनकही रह जाती हैं। कुछ कविताएँ दर्द से निकली हैं, कुछ अपनापन तलाशती हैं, और कुछ हमें याद दिलाती हैंकि ज़िंदगी में शुक्र के लिए भी बहुत कुछ है।</p></div></div>`);
+let current=0;
+function render(){pages.forEach((p,i)=>p.classList.toggle('active',i===current));document.getElementById('count').textContent=(current+1)+' / '+pages.length;document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===pages.length-1;pages[current].scrollTop=0}
+function go(n){if(n<0||n>=pages.length)return;current=n;render()}
+document.getElementById('prev').onclick=()=>go(current-1);document.getElementById('next').onclick=()=>go(current+1);document.getElementById('full').onclick=()=>document.documentElement.requestFullscreen?.();
+let sx=0,sy=0;document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy))go(current+(dx<0?1:-1))},{passive:true});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')go(current+1);if(e.key==='ArrowLeft'||e.key==='PageUp')go(current-1)});render();
+</script>
+</body>
+</html>
