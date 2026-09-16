@@ -1,6 +1,6 @@
-export default async function handler(req,res){
+module.exports = async function handler(req,res){
   const url=process.env.SUPABASE_URL;
-  const key=process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const key=process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
   if(!url||!key)return res.status(503).json({error:'Engagement backend is not configured yet.'});
   const base=url.replace(/\/$/,'');
   const headers={'apikey':key,'Authorization':`Bearer ${key}`,'Content-Type':'application/json'};
