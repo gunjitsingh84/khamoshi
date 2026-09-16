@@ -1,1 +1,11 @@
-window.KHAMOSHI_COVER = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1350"><rect width="900" height="1350" fill="#f3ecdf"/><rect x="28" y="28" width="844" height="1294" rx="8" fill="#f8f2e6" stroke="#cdbda8"/><circle cx="735" cy="165" r="105" fill="#b67d77" opacity=".55"/><path d="M650 240 C760 210 820 330 755 430 C720 485 650 500 615 455 C590 420 620 360 680 335" fill="#252329" opacity=".9"/><text x="450" y="380" text-anchor="middle" font-family="serif" font-size="82" fill="#6d302d">ख़ामोशी</text><text x="450" y="485" text-anchor="middle" font-family="serif" font-size="68" fill="#2d2926">की आवाज़</text><line x1="330" y1="550" x2="570" y2="550" stroke="#8e5a50" stroke-width="2"/><text x="450" y="625" text-anchor="middle" font-family="serif" font-size="30" fill="#403834">कुछ अनकहे एहसासों</text><text x="450" y="665" text-anchor="middle" font-family="serif" font-size="30" fill="#403834">की कविताएँ</text><path d="M150 1070 Q300 900 450 1070 T750 1070" fill="none" stroke="#8e5a50" stroke-width="3" opacity=".55"/><text x="450" y="1190" text-anchor="middle" font-family="serif" font-size="34" fill="#302b28">Mrs Tejinder Kaur</text></svg>`);try{document.write('<script src="cover-data-original.js?v=2"><\/script>')}catch(e){}try{document.write('<script src="engagement.js?v=2"><\/script>')}catch(e){}
+/* Load the preserved original cover synchronously before the flipbook renders. */
+(function(){
+  try {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'cover-data-original.js?v=3', false);
+    xhr.send(null);
+    if (xhr.status >= 200 && xhr.status < 300 && xhr.responseText) {
+      (0, eval)(xhr.responseText);
+    }
+  } catch (e) {}
+})();
